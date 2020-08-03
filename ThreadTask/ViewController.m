@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SMCallStack.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSString *result = [SMCallStack callStackWithType:SMCallStackTypeMain];
+    NSLog(result);
 }
 
 

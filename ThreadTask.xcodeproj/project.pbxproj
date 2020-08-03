@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		199A5E9705DEC779144053EA /* libPods-ThreadTask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C017544B8D1C26D7E1730 /* libPods-ThreadTask.a */; };
 		E9A2840824D8512900C87E4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2840724D8512900C87E4A /* AppDelegate.m */; };
 		E9A2840B24D8512900C87E4A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2840A24D8512900C87E4A /* SceneDelegate.m */; };
 		E9A2840E24D8512900C87E4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2840D24D8512900C87E4A /* ViewController.m */; };
@@ -16,6 +17,12 @@
 		E9A2841924D8512A00C87E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2841824D8512A00C87E4A /* main.m */; };
 		E9A2842324D8512A00C87E4A /* ThreadTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2842224D8512A00C87E4A /* ThreadTaskTests.m */; };
 		E9A2842E24D8512B00C87E4A /* ThreadTaskUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2842D24D8512B00C87E4A /* ThreadTaskUITests.m */; };
+		E9A2848124D85F6200C87E4A /* SMCallStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848024D85F6200C87E4A /* SMCallStack.m */; };
+		E9A2848224D85F6200C87E4A /* SMCallStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848024D85F6200C87E4A /* SMCallStack.m */; };
+		E9A2848324D85F6200C87E4A /* SMCallStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848024D85F6200C87E4A /* SMCallStack.m */; };
+		E9A2848624D85FB300C87E4A /* SMCallLib.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848524D85FB300C87E4A /* SMCallLib.m */; };
+		E9A2848724D85FB300C87E4A /* SMCallLib.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848524D85FB300C87E4A /* SMCallLib.m */; };
+		E9A2848824D85FB300C87E4A /* SMCallLib.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A2848524D85FB300C87E4A /* SMCallLib.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A1C017544B8D1C26D7E1730 /* libPods-ThreadTask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ThreadTask.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A310445ADF34E0E0B0CA83B4 /* Pods-ThreadTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreadTask.release.xcconfig"; path = "Target Support Files/Pods-ThreadTask/Pods-ThreadTask.release.xcconfig"; sourceTree = "<group>"; };
+		CAC692C4232F7F1477CA8C5D /* Pods-ThreadTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThreadTask.debug.xcconfig"; path = "Target Support Files/Pods-ThreadTask/Pods-ThreadTask.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A2840324D8512900C87E4A /* ThreadTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A2840624D8512900C87E4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9A2840724D8512900C87E4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +64,10 @@
 		E9A2842924D8512B00C87E4A /* ThreadTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThreadTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A2842D24D8512B00C87E4A /* ThreadTaskUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadTaskUITests.m; sourceTree = "<group>"; };
 		E9A2842F24D8512B00C87E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9A2847F24D85F6200C87E4A /* SMCallStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCallStack.h; sourceTree = "<group>"; };
+		E9A2848024D85F6200C87E4A /* SMCallStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCallStack.m; sourceTree = "<group>"; };
+		E9A2848424D85FB300C87E4A /* SMCallLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCallLib.h; sourceTree = "<group>"; };
+		E9A2848524D85FB300C87E4A /* SMCallLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCallLib.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				199A5E9705DEC779144053EA /* libPods-ThreadTask.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		793495A102BABD6600AD5155 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAC692C4232F7F1477CA8C5D /* Pods-ThreadTask.debug.xcconfig */,
+				A310445ADF34E0E0B0CA83B4 /* Pods-ThreadTask.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7C56D0C27AFA9235A9D15753 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A1C017544B8D1C26D7E1730 /* libPods-ThreadTask.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E9A283FA24D8512900C87E4A = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +120,8 @@
 				E9A2842124D8512A00C87E4A /* ThreadTaskTests */,
 				E9A2842C24D8512B00C87E4A /* ThreadTaskUITests */,
 				E9A2840424D8512900C87E4A /* Products */,
+				793495A102BABD6600AD5155 /* Pods */,
+				7C56D0C27AFA9235A9D15753 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +149,10 @@
 				E9A2841424D8512A00C87E4A /* LaunchScreen.storyboard */,
 				E9A2841724D8512A00C87E4A /* Info.plist */,
 				E9A2841824D8512A00C87E4A /* main.m */,
+				E9A2847F24D85F6200C87E4A /* SMCallStack.h */,
+				E9A2848024D85F6200C87E4A /* SMCallStack.m */,
+				E9A2848424D85FB300C87E4A /* SMCallLib.h */,
+				E9A2848524D85FB300C87E4A /* SMCallLib.m */,
 			);
 			path = ThreadTask;
 			sourceTree = "<group>";
@@ -144,6 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9A2843224D8512B00C87E4A /* Build configuration list for PBXNativeTarget "ThreadTask" */;
 			buildPhases = (
+				941BE8E02517498A06EAE5F2 /* [CP] Check Pods Manifest.lock */,
 				E9A283FF24D8512900C87E4A /* Sources */,
 				E9A2840024D8512900C87E4A /* Frameworks */,
 				E9A2840124D8512900C87E4A /* Resources */,
@@ -262,6 +301,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		941BE8E02517498A06EAE5F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ThreadTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9A283FF24D8512900C87E4A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,6 +334,8 @@
 				E9A2840E24D8512900C87E4A /* ViewController.m in Sources */,
 				E9A2840824D8512900C87E4A /* AppDelegate.m in Sources */,
 				E9A2841924D8512A00C87E4A /* main.m in Sources */,
+				E9A2848624D85FB300C87E4A /* SMCallLib.m in Sources */,
+				E9A2848124D85F6200C87E4A /* SMCallStack.m in Sources */,
 				E9A2840B24D8512900C87E4A /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A2848724D85FB300C87E4A /* SMCallLib.m in Sources */,
+				E9A2848224D85F6200C87E4A /* SMCallStack.m in Sources */,
 				E9A2842324D8512A00C87E4A /* ThreadTaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A2848824D85FB300C87E4A /* SMCallLib.m in Sources */,
+				E9A2848324D85F6200C87E4A /* SMCallStack.m in Sources */,
 				E9A2842E24D8512B00C87E4A /* ThreadTaskUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +507,7 @@
 		};
 		E9A2843324D8512B00C87E4A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC692C4232F7F1477CA8C5D /* Pods-ThreadTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -453,6 +524,7 @@
 		};
 		E9A2843424D8512B00C87E4A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A310445ADF34E0E0B0CA83B4 /* Pods-ThreadTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
