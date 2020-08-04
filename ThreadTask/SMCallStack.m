@@ -134,11 +134,12 @@ NSString *smStackOfThread(thread_t thread) {
         return [NSString stringWithFormat:@"Fail get thread: %u", thread];
     }
     //通过指令指针来获取当前指令地址
+    // 记录PC寄存器获取当前指令地址
     const uintptr_t instructionAddress = smMachInstructionPointerByCPU(&machineContext);
     buffer[i] = instructionAddress;
     ++i;
     
-    //
+    // 记录LR寄存器中的指令地址
     uintptr_t linkRegisterPointer = smMachThreadGetLinkRegisterPointerByCPU(&machineContext);
     if (linkRegisterPointer) {
         buffer[i] = linkRegisterPointer;
@@ -317,7 +318,8 @@ bool smDladdr(const uintptr_t address, Dl_info* const info) {
                     // addressWithSlide为未ASLR的地址，symbolBase也是为ASLR的地址
                     uintptr_t currentDistance = addressWithSlide - symbolBase;
                     //寻找最小的距离 bestDistance，因为 addressWithSlide 是某个方法的指令地址，要大于这个方法的入口。
-                    //离 addressWithSlide 越近的函数入口越匹配
+                    //离 addressWithSlide 越近的函数入口越匹配。
+                    // 这里的每个栈帧地址都是一个LR地址，是在一个方法内部，所以肯定要比方法的入口地址大，所以在计算最小距离的时候还要满足栈帧指针大于符号表项的指针
                     if ((addressWithSlide >= symbolBase) && (currentDistance <= bestDistance)) {
                         bestMatch = symbolTable + iSym;
                         bestDistance = currentDistance;
