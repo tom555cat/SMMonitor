@@ -256,10 +256,27 @@ bool smDladdr(const uintptr_t address, Dl_info* const info) {
     const uintptr_t imageVMAddressSlide = (uintptr_t)_dyld_get_image_vmaddr_slide(idx);
     /*-----------ASLR 的偏移量---------*/
     //https://en.wikipedia.org/wiki/Address_space_layout_randomization
+    // ASLR的虚拟地址-ASLR地址，获得未ASLR的虚拟地址
     const uintptr_t addressWithSlide = address - imageVMAddressSlide;
     //根据 Image 的 Index 来获取 segment 的基地址
     //段定义Mach-O文件中的字节范围以及动态链接器加载应用程序时这些字节映射到虚拟内存中的地址和内存保护属性。 因此，段总是虚拟内存页对齐。 片段包含零个或多个节。
+    // 当idx为0，是可执行文件时，smSegmentBaseOfImageIndex返回的是没ASLR的vm address - file offset，其实是一个空过PAGEZERO的VM address，
+    // 是一个__TEXT段的VM Address。
+    const uintptr_t smSegmentBaseOfImageIndexValue = smSegmentBaseOfImageIndex(idx);
+    // 当idx是0时，__TEXT段未ASLR的VM Address再加上ASLR，获得的是可执行文件的__TEXT的真实的虚拟地址；从打印结果看也是image的基地址；
+    // 当idx是0时，segmentBase是一个经过ASLR的image的虚拟基址
     const uintptr_t segmentBase = smSegmentBaseOfImageIndex(idx) + imageVMAddressSlide;
+    
+//(lldb) image list | grep ThreadTask
+//[  0] FCA0CC19-BD09-358C-AFB6-5319A694DECF 0x0000000104528000 /Users/tongleiming/Library/Developer/Xcode/DerivedData/ThreadTask-hecmeszmmisgtnbjetiizijvrego/Build/Products/Debug-iphoneos/ThreadTask.app/ThreadTask
+//(lldb) p/x smSegmentBaseOfImageIndexValue
+//(uintptr_t) $0 = 0x0000000100000000
+//(lldb) p/x imageVMAddressSlide
+//(uintptr_t) $1 = 0x0000000004528000
+    
+    ///////////// 前边费劲力气就是找一个经过ASLR的image基地址，
+    ///////////// 为了后续铜鼓这个ASLR的基地址找到符号表，然后比较去除ASLR的地址与符号表中的未ASLR的符号地址比较。
+    
     if (segmentBase == 0) {
         return false;
     }
@@ -295,7 +312,9 @@ bool smDladdr(const uintptr_t address, Dl_info* const info) {
                 // addressWithSlide = address - imageVMAddressSlide;
                 if (symbolTable[iSym].n_value != 0) {
                     //给定的偏移量是文件偏移量，减去 __LINKEDIT segment 的文件偏移量获得字符串和符号表的虚拟内存偏移量
+                    //symbolTable[iSym].n_value给定的是未ASLR的VM地址
                     uintptr_t symbolBase = symbolTable[iSym].n_value;
+                    // addressWithSlide为未ASLR的地址，symbolBase也是为ASLR的地址
                     uintptr_t currentDistance = addressWithSlide - symbolBase;
                     //寻找最小的距离 bestDistance，因为 addressWithSlide 是某个方法的指令地址，要大于这个方法的入口。
                     //离 addressWithSlide 越近的函数入口越匹配
@@ -377,14 +396,18 @@ uintptr_t smCmdFirstPointerFromMachHeader(const struct mach_header* const machHe
 uintptr_t smSegmentBaseOfImageIndex(const uint32_t idx) {
     const struct mach_header* machHeader = _dyld_get_image_header(idx);
     //查找 segment command 返回 image 的地址
+    // 这里是跳过header部分，获取到了load commands的基地址
     uintptr_t cmdPtr = smCmdFirstPointerFromMachHeader(machHeader);
     if (cmdPtr == 0) {
         return 0;
     }
+    // 获取 /* number of load commands */
     for (uint32_t i = 0; i < machHeader->ncmds; i++) {
         const struct load_command* loadCmd = (struct load_command*)cmdPtr;
         const segmentComandByCPU* segmentCmd = (segmentComandByCPU*)cmdPtr;
+        // __PAGEZERO,__TEXT,__DATA_CONST,__DATA,__LINKEDIT这几个load command有"Segment Name"字段
         if (strcmp(segmentCmd->segname, SEG_LINKEDIT) == 0) {
+            // LC_SEGMENT_64这些load command中的VM Address描述的是segment的虚拟地址，这些虚拟地址是没有经过ASLR偏移的。
             return (uintptr_t)(segmentCmd->vmaddr - segmentCmd->fileoff);
         }
         cmdPtr += loadCmd->cmdsize;

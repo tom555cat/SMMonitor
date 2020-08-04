@@ -1,3 +1,3 @@
 target 'ThreadTask' do
-pod 'PLCrashReporter'
+#pod 'PLCrashReporter'
 end
