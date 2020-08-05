@@ -133,6 +133,8 @@ NSString *smStackOfThread(thread_t thread) {
     if (kr != KERN_SUCCESS) {
         return [NSString stringWithFormat:@"Fail get thread: %u", thread];
     }
+    
+// 最前边的两个指针通过PC寄存器和LR寄存器来找函数名，防止叶子函数没有FP导致遗漏
     //通过指令指针来获取当前指令地址
     // 记录PC寄存器获取当前指令地址
     const uintptr_t instructionAddress = smMachInstructionPointerByCPU(&machineContext);
